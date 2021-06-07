@@ -1,5 +1,9 @@
 # Learning from Nested Data with Ornstein Auto-Encoders
 
+Youngwon Choi (youngwonchoi@mednet.ucla.edu)
+
+@Young-won
+
 ## Environment
 
 ### (recommended) Using Docker
