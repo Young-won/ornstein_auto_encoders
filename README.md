@@ -1,14 +1,10 @@
 # Learning from Nested Data with Ornstein Auto-Encoders
 
-Youngwon Choi (youngwonchoi@mednet.ucla.edu)
-
-[@Young-won](https://github.com/Young-won)
-
 This repository is for the implementation of the PSOAE model described in "Learning from Nested Data with Ornstein Auto-Encoders". (link TBD)
 
 #### Example of output pictures
 
-![](https://github.com/Young-won/ornstein_auto_encoders/blob/85975e22851e716786ca32ff16a8bf435f551a64/figures/vggface2/PSOAE_one_shot_together_identity_6.png)
+![](https://github.com/Young-won/ornstein_auto_encoders/blob/34b67e70cd57ad10a779e5531aa3b9a022950074/figures/supplement/vgg2_new_train.png)
 
 
 ## Environment
