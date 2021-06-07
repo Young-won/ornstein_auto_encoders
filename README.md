@@ -4,7 +4,12 @@ Youngwon Choi (youngwonchoi@mednet.ucla.edu)
 
 [@Young-won](https://github.com/Young-won)
 
+This repository is for the implementation of the PSOAE model described in "Learning from Nested Data with Ornstein Auto-Encoders". (link TBD)
+
+#### Example of output pictures
+
 ![](https://github.com/Young-won/ornstein_auto_encoders/blob/85975e22851e716786ca32ff16a8bf435f551a64/figures/vggface2/PSOAE_one_shot_together_identity_6.png)
+
 
 ## Environment
 
@@ -143,3 +148,10 @@ Our model (product-space OAE) achieves the following performance on :
 | RIOAE |    \(2.068 ($\pm$ 0.011)\)    | \(107.961 ($\pm$ 2.371)\) | \( 0.001 ($\pm$ 0.000)\) |      \(2.067 ($\pm$ 0.020)\)      | \(102.476 ($\pm$ 3.363)\) | \(0.001 ($\pm$ 0.000)\) |
 | __PSOAE__    |    \(2.146 ($\pm$ 0.104)\)    |  \(98.525 ($\pm$ 2.487)\) |  \(0.001 ($\pm$ 0.000)\) |     \( 2.125 ($\pm$ 0.118) \)     |  \(94.287 ($\pm$ 2.323)\) | \(0.001 ($\pm$ 0.000)\) |
 | Testset              |    \(3.883 ($\pm$ 0.146)\)    |            -            |  \(0.004 ($\pm$ 0.001)\) |      \(3.807 ($\pm$ 0.164)\)      |            -            | \(0.003 ($\pm$ 0.001)\) |
+
+
+## References
+Please cite the following paper:
+```
+TBD
+```
