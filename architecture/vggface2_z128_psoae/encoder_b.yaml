@@ -1,0 +1,265 @@
+backend: tensorflow
+class_name: Model
+config:
+  input_layers:
+  - - feature_b_input
+    - 0
+    - 0
+  layers:
+  - class_name: InputLayer
+    config:
+      batch_input_shape: !!python/tuple
+      - null
+      - 2048
+      dtype: float32
+      name: feature_b_input
+      sparse: false
+    inbound_nodes: []
+    name: feature_b_input
+  - class_name: Dense
+    config:
+      activation: linear
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      dtype: float32
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: RandomNormal
+        config:
+          mean: 0.0
+          seed: null
+          stddev: 0.0099999
+      kernel_regularizer: null
+      name: pre_b_0_dense
+      trainable: true
+      units: 192
+      use_bias: true
+    inbound_nodes:
+    - - - feature_b_input
+        - 0
+        - 0
+        - {}
+    name: pre_b_0_dense
+  - class_name: BatchNormalization
+    config:
+      axis: -1
+      beta_constraint: null
+      beta_initializer:
+        class_name: Zeros
+        config: {}
+      beta_regularizer: null
+      center: true
+      dtype: float32
+      epsilon: 1.0e-05
+      gamma_constraint: null
+      gamma_initializer:
+        class_name: Ones
+        config: {}
+      gamma_regularizer: null
+      momentum: 0.9
+      moving_mean_initializer:
+        class_name: Zeros
+        config: {}
+      moving_variance_initializer:
+        class_name: Ones
+        config: {}
+      name: pre_b_0_bn
+      scale: true
+      trainable: true
+    inbound_nodes:
+    - - - pre_b_0_dense
+        - 0
+        - 0
+        - {}
+    name: pre_b_0_bn
+  - class_name: Activation
+    config:
+      activation: relu
+      dtype: float32
+      name: pre_b_0_activation
+      trainable: true
+    inbound_nodes:
+    - - - pre_b_0_bn
+        - 0
+        - 0
+        - {}
+    name: pre_b_0_activation
+  - class_name: Dense
+    config:
+      activation: linear
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      dtype: float32
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: RandomNormal
+        config:
+          mean: 0.0
+          seed: null
+          stddev: 0.0099999
+      kernel_regularizer: null
+      name: pre_b_1_dense
+      trainable: true
+      units: 128
+      use_bias: true
+    inbound_nodes:
+    - - - pre_b_0_activation
+        - 0
+        - 0
+        - {}
+    name: pre_b_1_dense
+  - class_name: BatchNormalization
+    config:
+      axis: -1
+      beta_constraint: null
+      beta_initializer:
+        class_name: Zeros
+        config: {}
+      beta_regularizer: null
+      center: true
+      dtype: float32
+      epsilon: 1.0e-05
+      gamma_constraint: null
+      gamma_initializer:
+        class_name: Ones
+        config: {}
+      gamma_regularizer: null
+      momentum: 0.9
+      moving_mean_initializer:
+        class_name: Zeros
+        config: {}
+      moving_variance_initializer:
+        class_name: Ones
+        config: {}
+      name: pre_b_1_bn
+      scale: true
+      trainable: true
+    inbound_nodes:
+    - - - pre_b_1_dense
+        - 0
+        - 0
+        - {}
+    name: pre_b_1_bn
+  - class_name: Activation
+    config:
+      activation: relu
+      dtype: float32
+      name: pre_b_1_activation
+      trainable: true
+    inbound_nodes:
+    - - - pre_b_1_bn
+        - 0
+        - 0
+        - {}
+    name: pre_b_1_activation
+  - class_name: Dense
+    config:
+      activation: linear
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      dtype: float32
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: RandomNormal
+        config:
+          mean: 0.0
+          seed: null
+          stddev: 0.0099999
+      kernel_regularizer: null
+      name: b_mean_dense
+      trainable: true
+      units: 64
+      use_bias: true
+    inbound_nodes:
+    - - - pre_b_1_activation
+        - 0
+        - 0
+        - {}
+    name: b_mean_dense
+  - class_name: Dense
+    config:
+      activation: linear
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      dtype: float32
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: RandomNormal
+        config:
+          mean: 0.0
+          seed: null
+          stddev: 0.0099999
+      kernel_regularizer: null
+      name: b_log_var_dense
+      trainable: true
+      units: 64
+      use_bias: true
+    inbound_nodes:
+    - - - pre_b_1_activation
+        - 0
+        - 0
+        - {}
+    name: b_log_var_dense
+  - class_name: Lambda
+    config:
+      arguments:
+        z_dim: 64
+      dtype: float32
+      function: !!python/tuple
+      - '4wIAAAAAAAAACAAAAAYAAABDAAAAc1AAAABkAWQAbABqAX0CfABcAn0DfQR8AmoCfARkAmQDgwN9
+
+        BXwCagN8A4MBZAEZAH0GfAJqBHwGfAFmAmQEZAVkBmQHjQR9B3wDfAV8BxQAFwBTACkITukAAAAA
+
+        Z7yJ2Jey0pw8ZwAAAAAAQI9AZwAAAAAAAAAAZwAAAAAAAPA/2gdmbG9hdDMyKQTaBXNoYXBl2gRt
+
+        ZWFu2gZzdGRkZXbaBWR0eXBlKQXaDWtlcmFzLmJhY2tlbmTaB2JhY2tlbmTaBGNsaXByAwAAANoN
+
+        cmFuZG9tX25vcm1hbCkI2gRhcmdz2gV6X2RpbdoBa3IEAAAA2gdsb2dfdmFy2gVzY2FsZdoKYmF0
+
+        Y2hfc2l6ZdoHZXBzaWxvbqkAchIAAAD6Ry9EQVRBL2hvbWUvbXVoYS9jb2RlL29ybnN0ZWluX2F1
+
+        dG9fZW5jb2Rlci9vcm5zdGVpbl9hdXRvX2VuY29kZXIvb3BzLnB52ghzYW1wbGluZwkBAABzDAAA
+
+        AAABCgEIAg4BDgEWAQ==
+
+        '
+      - null
+      - null
+      function_type: lambda
+      name: b_j_given_x_j
+      output_shape: !!python/tuple
+      - 64
+      output_shape_type: raw
+      trainable: true
+    inbound_nodes:
+    - - - b_mean_dense
+        - 0
+        - 0
+        - &id001 {}
+      - - b_log_var_dense
+        - 0
+        - 0
+        - *id001
+    name: b_j_given_x_j
+  name: encoder_b
+  output_layers:
+  - - b_j_given_x_j
+    - 0
+    - 0
+keras_version: 2.3.1

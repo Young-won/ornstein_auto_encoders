@@ -1,0 +1,132 @@
+backend: tensorflow
+class_name: Model
+config:
+  input_layers:
+  - - latent_input
+    - 0
+    - 0
+  layers:
+  - class_name: InputLayer
+    config:
+      batch_input_shape: !!python/tuple
+      - null
+      - 128
+      dtype: float32
+      name: latent_input
+      sparse: false
+    inbound_nodes: []
+    name: latent_input
+  - class_name: Dense
+    config:
+      activation: linear
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      dtype: float32
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: RandomNormal
+        config:
+          mean: 0.0
+          seed: null
+          stddev: 0.0099999
+      kernel_regularizer: null
+      name: mlp1_dense_dense
+      trainable: true
+      units: 128
+      use_bias: true
+    inbound_nodes:
+    - - - latent_input
+        - 0
+        - 0
+        - {}
+    name: mlp1_dense_dense
+  - class_name: Activation
+    config:
+      activation: relu
+      dtype: float32
+      name: mlp1_dense_activation
+      trainable: true
+    inbound_nodes:
+    - - - mlp1_dense_dense
+        - 0
+        - 0
+        - {}
+    name: mlp1_dense_activation
+  - class_name: Dense
+    config:
+      activation: linear
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      dtype: float32
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: RandomNormal
+        config:
+          mean: 0.0
+          seed: null
+          stddev: 0.0099999
+      kernel_regularizer: null
+      name: mlp2_dense_dense
+      trainable: true
+      units: 128
+      use_bias: true
+    inbound_nodes:
+    - - - mlp1_dense_activation
+        - 0
+        - 0
+        - {}
+    name: mlp2_dense_dense
+  - class_name: Activation
+    config:
+      activation: relu
+      dtype: float32
+      name: mlp2_dense_activation
+      trainable: true
+    inbound_nodes:
+    - - - mlp2_dense_dense
+        - 0
+        - 0
+        - {}
+    name: mlp2_dense_activation
+  - class_name: Dense
+    config:
+      activation: linear
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      dtype: float32
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: RandomNormal
+        config:
+          mean: 0.0
+          seed: null
+          stddev: 0.0099999
+      kernel_regularizer: null
+      name: logit_dense
+      trainable: true
+      units: 8631
+      use_bias: true
+    inbound_nodes:
+    - - - mlp2_dense_activation
+        - 0
+        - 0
+        - {}
+    name: logit_dense
+  name: ancillary
+  output_layers:
+  - - logit_dense
+    - 0
+    - 0
+keras_version: 2.3.1

@@ -1,0 +1,789 @@
+backend: tensorflow
+class_name: Model
+config:
+  input_layers:
+  - - image_input
+    - 0
+    - 0
+  layers:
+  - class_name: InputLayer
+    config:
+      batch_input_shape: !!python/tuple
+      - null
+      - 28
+      - 28
+      - 1
+      dtype: float32
+      name: image_input
+      sparse: false
+    inbound_nodes: []
+    name: image_input
+  - class_name: Conv2D
+    config:
+      activation: linear
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      data_format: channels_last
+      dilation_rate: &id001 !!python/tuple
+      - 1
+      - 1
+      dtype: float32
+      filters: 16
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: TruncatedNormal
+        config:
+          mean: 0.0
+          seed: null
+          stddev: 0.0099999
+      kernel_regularizer: null
+      kernel_size: !!python/tuple
+      - 4
+      - 4
+      name: e1_conv
+      padding: same
+      strides: !!python/tuple
+      - 2
+      - 2
+      trainable: true
+      use_bias: true
+    inbound_nodes:
+    - - - image_input
+        - 0
+        - 0
+        - {}
+    name: e1_conv
+  - class_name: BatchNormalization
+    config:
+      axis: -1
+      beta_constraint: null
+      beta_initializer:
+        class_name: Zeros
+        config: {}
+      beta_regularizer: null
+      center: true
+      dtype: float32
+      epsilon: 1.0e-05
+      gamma_constraint: null
+      gamma_initializer:
+        class_name: Ones
+        config: {}
+      gamma_regularizer: null
+      momentum: 0.9
+      moving_mean_initializer:
+        class_name: Zeros
+        config: {}
+      moving_variance_initializer:
+        class_name: Ones
+        config: {}
+      name: e1_bn
+      scale: true
+      trainable: true
+    inbound_nodes:
+    - - - e1_conv
+        - 0
+        - 0
+        - {}
+    name: e1_bn
+  - class_name: Activation
+    config:
+      activation: relu
+      dtype: float32
+      name: e1_activation
+      trainable: true
+    inbound_nodes:
+    - - - e1_bn
+        - 0
+        - 0
+        - {}
+    name: e1_activation
+  - class_name: Conv2D
+    config:
+      activation: linear
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      data_format: channels_last
+      dilation_rate: *id001
+      dtype: float32
+      filters: 32
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: TruncatedNormal
+        config:
+          mean: 0.0
+          seed: null
+          stddev: 0.0099999
+      kernel_regularizer: null
+      kernel_size: !!python/tuple
+      - 4
+      - 4
+      name: e2_conv
+      padding: same
+      strides: !!python/tuple
+      - 2
+      - 2
+      trainable: true
+      use_bias: true
+    inbound_nodes:
+    - - - e1_activation
+        - 0
+        - 0
+        - {}
+    name: e2_conv
+  - class_name: BatchNormalization
+    config:
+      axis: -1
+      beta_constraint: null
+      beta_initializer:
+        class_name: Zeros
+        config: {}
+      beta_regularizer: null
+      center: true
+      dtype: float32
+      epsilon: 1.0e-05
+      gamma_constraint: null
+      gamma_initializer:
+        class_name: Ones
+        config: {}
+      gamma_regularizer: null
+      momentum: 0.9
+      moving_mean_initializer:
+        class_name: Zeros
+        config: {}
+      moving_variance_initializer:
+        class_name: Ones
+        config: {}
+      name: e2_bn
+      scale: true
+      trainable: true
+    inbound_nodes:
+    - - - e2_conv
+        - 0
+        - 0
+        - {}
+    name: e2_bn
+  - class_name: Activation
+    config:
+      activation: relu
+      dtype: float32
+      name: e2_activation
+      trainable: true
+    inbound_nodes:
+    - - - e2_bn
+        - 0
+        - 0
+        - {}
+    name: e2_activation
+  - class_name: Conv2D
+    config:
+      activation: linear
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      data_format: channels_last
+      dilation_rate: *id001
+      dtype: float32
+      filters: 64
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: TruncatedNormal
+        config:
+          mean: 0.0
+          seed: null
+          stddev: 0.0099999
+      kernel_regularizer: null
+      kernel_size: !!python/tuple
+      - 4
+      - 4
+      name: e3_conv
+      padding: same
+      strides: !!python/tuple
+      - 2
+      - 2
+      trainable: true
+      use_bias: true
+    inbound_nodes:
+    - - - e2_activation
+        - 0
+        - 0
+        - {}
+    name: e3_conv
+  - class_name: BatchNormalization
+    config:
+      axis: -1
+      beta_constraint: null
+      beta_initializer:
+        class_name: Zeros
+        config: {}
+      beta_regularizer: null
+      center: true
+      dtype: float32
+      epsilon: 1.0e-05
+      gamma_constraint: null
+      gamma_initializer:
+        class_name: Ones
+        config: {}
+      gamma_regularizer: null
+      momentum: 0.9
+      moving_mean_initializer:
+        class_name: Zeros
+        config: {}
+      moving_variance_initializer:
+        class_name: Ones
+        config: {}
+      name: e3_bn
+      scale: true
+      trainable: true
+    inbound_nodes:
+    - - - e3_conv
+        - 0
+        - 0
+        - {}
+    name: e3_bn
+  - class_name: Activation
+    config:
+      activation: relu
+      dtype: float32
+      name: e3_activation
+      trainable: true
+    inbound_nodes:
+    - - - e3_bn
+        - 0
+        - 0
+        - {}
+    name: e3_activation
+  - class_name: Conv2D
+    config:
+      activation: linear
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      data_format: channels_last
+      dilation_rate: *id001
+      dtype: float32
+      filters: 128
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: TruncatedNormal
+        config:
+          mean: 0.0
+          seed: null
+          stddev: 0.0099999
+      kernel_regularizer: null
+      kernel_size: !!python/tuple
+      - 4
+      - 4
+      name: e4_conv
+      padding: same
+      strides: !!python/tuple
+      - 2
+      - 2
+      trainable: true
+      use_bias: true
+    inbound_nodes:
+    - - - e3_activation
+        - 0
+        - 0
+        - {}
+    name: e4_conv
+  - class_name: BatchNormalization
+    config:
+      axis: -1
+      beta_constraint: null
+      beta_initializer:
+        class_name: Zeros
+        config: {}
+      beta_regularizer: null
+      center: true
+      dtype: float32
+      epsilon: 1.0e-05
+      gamma_constraint: null
+      gamma_initializer:
+        class_name: Ones
+        config: {}
+      gamma_regularizer: null
+      momentum: 0.9
+      moving_mean_initializer:
+        class_name: Zeros
+        config: {}
+      moving_variance_initializer:
+        class_name: Ones
+        config: {}
+      name: e4_bn
+      scale: true
+      trainable: true
+    inbound_nodes:
+    - - - e4_conv
+        - 0
+        - 0
+        - {}
+    name: e4_bn
+  - class_name: Activation
+    config:
+      activation: relu
+      dtype: float32
+      name: e4_activation
+      trainable: true
+    inbound_nodes:
+    - - - e4_bn
+        - 0
+        - 0
+        - {}
+    name: e4_activation
+  - class_name: Conv2D
+    config:
+      activation: linear
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      data_format: channels_last
+      dilation_rate: *id001
+      dtype: float32
+      filters: 256
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: TruncatedNormal
+        config:
+          mean: 0.0
+          seed: null
+          stddev: 0.0099999
+      kernel_regularizer: null
+      kernel_size: !!python/tuple
+      - 4
+      - 4
+      name: e5_conv
+      padding: same
+      strides: !!python/tuple
+      - 2
+      - 2
+      trainable: true
+      use_bias: true
+    inbound_nodes:
+    - - - e4_activation
+        - 0
+        - 0
+        - {}
+    name: e5_conv
+  - class_name: BatchNormalization
+    config:
+      axis: -1
+      beta_constraint: null
+      beta_initializer:
+        class_name: Zeros
+        config: {}
+      beta_regularizer: null
+      center: true
+      dtype: float32
+      epsilon: 1.0e-05
+      gamma_constraint: null
+      gamma_initializer:
+        class_name: Ones
+        config: {}
+      gamma_regularizer: null
+      momentum: 0.9
+      moving_mean_initializer:
+        class_name: Zeros
+        config: {}
+      moving_variance_initializer:
+        class_name: Ones
+        config: {}
+      name: e5_bn
+      scale: true
+      trainable: true
+    inbound_nodes:
+    - - - e5_conv
+        - 0
+        - 0
+        - {}
+    name: e5_bn
+  - class_name: Activation
+    config:
+      activation: relu
+      dtype: float32
+      name: e5_activation
+      trainable: true
+    inbound_nodes:
+    - - - e5_bn
+        - 0
+        - 0
+        - {}
+    name: e5_activation
+  - class_name: Flatten
+    config:
+      data_format: channels_last
+      dtype: float32
+      name: flatten
+      trainable: true
+    inbound_nodes:
+    - - - e5_activation
+        - 0
+        - 0
+        - {}
+    name: flatten
+  - class_name: Dense
+    config:
+      activation: linear
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      dtype: float32
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: RandomNormal
+        config:
+          mean: 0.0
+          seed: null
+          stddev: 0.0099999
+      kernel_regularizer: null
+      name: pre_h_dense
+      trainable: true
+      units: 64
+      use_bias: true
+    inbound_nodes:
+    - - - flatten
+        - 0
+        - 0
+        - {}
+    name: pre_h_dense
+  - class_name: BatchNormalization
+    config:
+      axis: -1
+      beta_constraint: null
+      beta_initializer:
+        class_name: Zeros
+        config: {}
+      beta_regularizer: null
+      center: true
+      dtype: float32
+      epsilon: 1.0e-05
+      gamma_constraint: null
+      gamma_initializer:
+        class_name: Ones
+        config: {}
+      gamma_regularizer: null
+      momentum: 0.9
+      moving_mean_initializer:
+        class_name: Zeros
+        config: {}
+      moving_variance_initializer:
+        class_name: Ones
+        config: {}
+      name: pre_h_bn
+      scale: true
+      trainable: true
+    inbound_nodes:
+    - - - pre_h_dense
+        - 0
+        - 0
+        - {}
+    name: pre_h_bn
+  - class_name: Activation
+    config:
+      activation: relu
+      dtype: float32
+      name: pre_h_activation
+      trainable: true
+    inbound_nodes:
+    - - - pre_h_bn
+        - 0
+        - 0
+        - {}
+    name: pre_h_activation
+  - class_name: Dense
+    config:
+      activation: linear
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      dtype: float32
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: RandomNormal
+        config:
+          mean: 0.0
+          seed: null
+          stddev: 0.0099999
+      kernel_regularizer: null
+      name: pre_e_dense
+      trainable: true
+      units: 32
+      use_bias: true
+    inbound_nodes:
+    - - - pre_h_activation
+        - 0
+        - 0
+        - {}
+    name: pre_e_dense
+  - class_name: Dense
+    config:
+      activation: linear
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      dtype: float32
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: RandomNormal
+        config:
+          mean: 0.0
+          seed: null
+          stddev: 0.0099999
+      kernel_regularizer: null
+      name: pre_b_1_dense
+      trainable: true
+      units: 16
+      use_bias: true
+    inbound_nodes:
+    - - - pre_h_activation
+        - 0
+        - 0
+        - {}
+    name: pre_b_1_dense
+  - class_name: BatchNormalization
+    config:
+      axis: -1
+      beta_constraint: null
+      beta_initializer:
+        class_name: Zeros
+        config: {}
+      beta_regularizer: null
+      center: true
+      dtype: float32
+      epsilon: 1.0e-05
+      gamma_constraint: null
+      gamma_initializer:
+        class_name: Ones
+        config: {}
+      gamma_regularizer: null
+      momentum: 0.9
+      moving_mean_initializer:
+        class_name: Zeros
+        config: {}
+      moving_variance_initializer:
+        class_name: Ones
+        config: {}
+      name: pre_e_bn
+      scale: true
+      trainable: true
+    inbound_nodes:
+    - - - pre_e_dense
+        - 0
+        - 0
+        - {}
+    name: pre_e_bn
+  - class_name: BatchNormalization
+    config:
+      axis: -1
+      beta_constraint: null
+      beta_initializer:
+        class_name: Zeros
+        config: {}
+      beta_regularizer: null
+      center: true
+      dtype: float32
+      epsilon: 1.0e-05
+      gamma_constraint: null
+      gamma_initializer:
+        class_name: Ones
+        config: {}
+      gamma_regularizer: null
+      momentum: 0.9
+      moving_mean_initializer:
+        class_name: Zeros
+        config: {}
+      moving_variance_initializer:
+        class_name: Ones
+        config: {}
+      name: pre_b_1_bn
+      scale: true
+      trainable: true
+    inbound_nodes:
+    - - - pre_b_1_dense
+        - 0
+        - 0
+        - {}
+    name: pre_b_1_bn
+  - class_name: Activation
+    config:
+      activation: relu
+      dtype: float32
+      name: pre_e_activation
+      trainable: true
+    inbound_nodes:
+    - - - pre_e_bn
+        - 0
+        - 0
+        - {}
+    name: pre_e_activation
+  - class_name: Activation
+    config:
+      activation: relu
+      dtype: float32
+      name: pre_b_1_activation
+      trainable: true
+    inbound_nodes:
+    - - - pre_b_1_bn
+        - 0
+        - 0
+        - {}
+    name: pre_b_1_activation
+  - class_name: Dense
+    config:
+      activation: linear
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      dtype: float32
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: RandomNormal
+        config:
+          mean: 0.0
+          seed: null
+          stddev: 0.0099999
+      kernel_regularizer: null
+      name: mean_dense
+      trainable: true
+      units: 8
+      use_bias: true
+    inbound_nodes:
+    - - - pre_e_activation
+        - 0
+        - 0
+        - {}
+    name: mean_dense
+  - class_name: Dense
+    config:
+      activation: linear
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      dtype: float32
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: RandomNormal
+        config:
+          mean: 0.0
+          seed: null
+          stddev: 0.0099999
+      kernel_regularizer: null
+      name: log_var_dense
+      trainable: true
+      units: 8
+      use_bias: true
+    inbound_nodes:
+    - - - pre_e_activation
+        - 0
+        - 0
+        - {}
+    name: log_var_dense
+  - class_name: Dense
+    config:
+      activation: linear
+      activity_regularizer: null
+      bias_constraint: null
+      bias_initializer:
+        class_name: Zeros
+        config: {}
+      bias_regularizer: null
+      dtype: float32
+      kernel_constraint: null
+      kernel_initializer:
+        class_name: RandomNormal
+        config:
+          mean: 0.0
+          seed: null
+          stddev: 0.0099999
+      kernel_regularizer: null
+      name: b_j_given_x_j_dense
+      trainable: true
+      units: 8
+      use_bias: true
+    inbound_nodes:
+    - - - pre_b_1_activation
+        - 0
+        - 0
+        - {}
+    name: b_j_given_x_j_dense
+  - class_name: Lambda
+    config:
+      arguments:
+        z_dim: 8
+      dtype: float32
+      function: !!python/tuple
+      - '4wIAAAAAAAAACAAAAAcAAABDAAAAc2AAAABkAWQAbABqAX0CfABcAn0DfQR8AmoCZAJ8AmoDfAJq
+
+        BHwEZAhkA4MDgwEXAIMBfQV8AmoFfAODAWQBGQB9BnwCagZ8BnwBZgJkBGQFZAZkB40EfQd8A3wF
+
+        fAcUABcAUwApCU7pAAAAAGc6jDDijnlFPmcAAAAAAABJQGcAAAAAAAAAAGcAAAAAAADwP9oHZmxv
+
+        YXQzMikE2gVzaGFwZdoEbWVhbtoGc3RkZGV22gVkdHlwZWcAAAAAAABJwCkH2g1rZXJhcy5iYWNr
+
+        ZW5k2gdiYWNrZW5k2gRzcXJ02gNleHDaBGNsaXByAwAAANoNcmFuZG9tX25vcm1hbCkI2gRhcmdz
+
+        2gV6X2RpbdoBa3IEAAAA2gdsb2dfdmFy2gVzY2FsZdoKYmF0Y2hfc2l6ZdoHZXBzaWxvbqkAchQA
+
+        AAD6Ry9EQVRBL2hvbWUvbXVoYS9jb2RlL29ybnN0ZWluX2F1dG9fZW5jb2Rlci9vcm5zdGVpbl9h
+
+        dXRvX2VuY29kZXIvb3BzLnB52ghzYW1wbGluZ5cAAABzDAAAAAABCgEIAR4BDgEWAQ==
+
+        '
+      - null
+      - null
+      function_type: lambda
+      name: e_given_x_sample
+      output_shape: !!python/tuple
+      - 8
+      output_shape_type: raw
+      trainable: true
+    inbound_nodes:
+    - - - mean_dense
+        - 0
+        - 0
+        - &id002 {}
+      - - log_var_dense
+        - 0
+        - 0
+        - *id002
+    name: e_given_x_sample
+  name: encoder_e
+  output_layers:
+  - - b_j_given_x_j_dense
+    - 0
+    - 0
+  - - e_given_x_sample
+    - 0
+    - 0
+keras_version: 2.3.1

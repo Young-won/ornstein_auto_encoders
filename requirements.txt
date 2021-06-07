@@ -1,0 +1,9 @@
+tensorflow-gpu == 1.15
+keras == 2.3.1
+numpy
+scikit-learn
+keras_vggface
+pandas
+matplotlib
+opencv-python
+pylab-sdk

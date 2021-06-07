@@ -1,0 +1,14 @@
+version: 1
+loggers:
+    default:
+        handlers: [consoleHandler]
+        level: DEBUG
+handlers:
+    consoleHandler:
+        class: logging.StreamHandler
+        level: DEBUG
+        formatter: brief
+formatters:
+    brief:
+        format: '[%(name)-8s|%(levelname)s|%(filename)s:%(lineno)s] %(message)s'
+
