@@ -34,7 +34,7 @@ export notebook_port=9999
 docker run -it --rm -p $notebook_port:$notebook_port -v $PWD:/workdir -w /workdir oae_docker bash -c "jupyter notebook --port=$notebook_port --no-browser --ip=0.0.0.0 --allow-root"
 ```
 
-### Pip environments
+### Using Pip
 
 To install requirements:
 
