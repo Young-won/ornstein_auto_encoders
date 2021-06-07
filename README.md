@@ -2,12 +2,14 @@
 
 Youngwon Choi (youngwonchoi@mednet.ucla.edu)
 
-@Young-won
+[@Young-won](https://github.com/Young-won)
+
+![](https://github.com/Young-won/ornstein_auto_encoders/blob/85975e22851e716786ca32ff16a8bf435f551a64/figures/vggface2/PSOAE_one_shot_together_identity_6.png)
 
 ## Environment
 
 ### (recommended) Using Docker
-Install ddo (https://docs.docker.com/get-docker/)
+[Install Docker](https://docs.docker.com/install/) on your local host machine.
 More information for docker can be found in [Docker documentation](https://docs.docker.com/storage/bind-mounts/)
 
 #### Build the docker container
