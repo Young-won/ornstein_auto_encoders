@@ -997,7 +997,7 @@ class WAE_GAN():
                                                                    decay=self.train_models_lr[name]['decay'])
                 k.set_value(self.parallel_train_models[name].optimizer.lr, self.train_models_lr[name]['lr'])
    
- class WAE_MMD():
+#  class WAE_MMD():
 #     def __init__(self, log, path_info, network_info, n_label):
 #         self.log = log
 #         self.path_info = path_info

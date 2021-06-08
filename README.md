@@ -49,6 +49,8 @@ You can download VGGFace2 data here:
 
 - [VGGFace2](http://www.robots.ox.ac.uk/~vgg/data/vgg_face2/) 
 
+If the above link is not working, please use this link: https://academictorrents.com/details/535113b8395832f09121bc53ac85d7bc8ef6fa5b
+
 Set all information from VGGFace2 dataset under the directory "data/vggface2/". It should have the files:
 - "train_list.txt"
 - "test_list.txt"
@@ -75,6 +77,7 @@ Note that this command will take several hours to process with a single NVIDIA T
 To train the product-space OAE model in the paper, run this command:
 
 ```train
+export CUDA_VISIBLE_DEVICES=0
 python3.6 mnist_training.py --log_info=configurations/log_info.yaml --path_info=configurations/mnist/psoae_path_info.cfg --network_info=configurations/mnist/psoae_network_info.cfg
 ```
 
@@ -86,6 +89,7 @@ The trained model will be saved at the directory `mnist_experiments/mnist_imbala
 To train the product-space OAE model in the paper, run this command:
 
 ```train
+export CUDA_VISIBLE_DEVICES=0
 python3.6 vggface2_training.py --log_info=configurations/log_info.yaml --path_info=configurations/vggface2/psoae_path_info.cfg --network_identity_info=configurations/vggface2/psoae_network_identity_info.cfg --network_within_unit_info=configurations/vggface2/psoae_network_within_unit_info.cfg --network_total_info=configurations/vggface2/psoae_network_total_info.cfg
 ```
 
@@ -111,6 +115,7 @@ https://drive.google.com/file/d/1035W4rNhacXkCrYt9YSKt7nf4WiTqVIU/view?usp=shari
 To evaluate the pre-trained model on VGGFace2, unzip the downloaded model to specipic directory (ex. vggfae2_pretrained/vggface2_psoae) and run this command:
 
 ```eval
+export CUDA_VISIBLE_DEVICES=0
 python3.6 vggface2_evaluate.py --log_info=configurations/log_info.yaml --model_path=vggface2_pretrained/vggface2_psoae --model_aka=PSOAE --path_info=configurations/vggface2/psoae_path_info.cfg --network_info=configurations/vggface2/psoae_network_total_info.cfg
 ```
 
