@@ -1,2 +1,9 @@
 .ipynb_checkpoints/
 __pycache__/
+
+!.keep
+
+mnist_experiments/*
+mnist_pretrained/*
+vggface2_experiments/*
+vggface2_pretrained/*

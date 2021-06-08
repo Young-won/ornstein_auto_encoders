@@ -18,7 +18,7 @@ More information for docker can be found in [Docker documentation](https://docs.
 docker build -t oae_docker .
 ```
 
-#### Run the docker container
+#### Run the docker container for running the scripts
 The docker, by default, start in the current directory as /workdir. If you need to access your local directories, you need to be mounted in the docker.
 
 To mount a directory, use the -v <source_dir>:<mount_dir> option.
@@ -112,7 +112,7 @@ To evaluate the pre-trained model on imbalanced MNIST, see the notebooks:
 The pre-trained models on VGGFace2 was omitted because of the size. The download link is as follow:
 https://drive.google.com/file/d/1035W4rNhacXkCrYt9YSKt7nf4WiTqVIU/view?usp=sharing
 
-To evaluate the pre-trained model on VGGFace2, unzip the downloaded model to specipic directory (ex. vggfae2_pretrained/vggface2_psoae) and run this command:
+To evaluate the pre-trained model on VGGFace2, unzip the downloaded model to specipic directory (ex. `vggfae2_pretrained/vggface2_psoae`) and run this command:
 
 ```eval
 export CUDA_VISIBLE_DEVICES=0
