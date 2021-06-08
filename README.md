@@ -118,8 +118,8 @@ To train the product-space OAE model in the paper, run this command:
 export CUDA_VISIBLE_DEVICES=0
 python3.6 vggface2_training.py --log_info=configurations/log_info.yaml --path_info=configurations/vggface2/psoae_path_info.cfg --network_identity_info=configurations/vggface2/psoae_network_identity_info.cfg --network_within_unit_info=configurations/vggface2/psoae_network_within_unit_info.cfg --network_total_info=configurations/vggface2/psoae_network_total_info.cfg
 ```
-
 The trained model will be saved at the directory `vggface2_experiments`.
+You can update the path information in `configurations/vggface2/psoae_path_info.cfg` to use your specific data root path or to change the directory for saving models.
 
 
 ## Evaluation
@@ -129,8 +129,8 @@ The trained model will be saved at the directory `vggface2_experiments`.
 You can use the pre-trained models on imbalanced MNIST in the directory "mnist_pretraind/".
 
 To evaluate the pre-trained model on imbalanced MNIST, see the notebooks:
-    - "mnist_numerics.ipynb" for calculating the performance measures
-    - "mnist_figures.ipynb" for generating the figures
+    - `mnist_numerics.ipynb` for calculating the performance measures
+    - `mnist_figures.ipynb` for generating the figures
 
 
 ### VGGFace2
@@ -147,7 +147,7 @@ python3.6 vggface2_evaluate.py --log_info=configurations/log_info.yaml --model_p
 
 Note that you have to set the directory have the pre-trained model in the argument ` --model_path`.
 
-To generate the images with the pre-train model on VGGFace2, see the notebook "vgg2_figures.ipynb"
+To generate the images with the pre-train model on VGGFace2, see the notebook `vgg2_figures.ipynb`.
 
 
 ## Results
