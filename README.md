@@ -51,15 +51,41 @@ You can download VGGFace2 data here:
 
 If the above link is not working, please use this link: https://academictorrents.com/details/535113b8395832f09121bc53ac85d7bc8ef6fa5b
 
-Set all information from VGGFace2 dataset under the directory "data/vggface2/". It should have the files:
-- "train_list.txt"
-- "test_list.txt"
-- "identity_meta.csv"
+Set all information from VGGFace2 dataset under the directory `data/vggface2/`. It should have the files:
+- `train_list.txt`
+- `test_list.txt`
+- `identity_meta.csv`
 
 and the directories of images:
-- "train/"
-- "test/"
-- "bb_landmark/"
+- `train/`
+- `test/`
+- `bb_landmark/`
+
+See the pseudo directory strucutre:
+```
+data
+|- vggface2
+| |- train_list.txt
+| |- test_list.txt
+| |- identity_meta.csv
+| |- train
+| | |- n000002
+| | | |- 0001_01.jpg
+| | | |- 0002_01.jpg
+| | | |- ....
+| | |- ....
+| |- test
+| | |- n000001
+| | | |- 0001_01.jpg
+| | | |- 0002_01.jpg
+| | | |- ....
+| | |- ....
+| |- bb_landmark
+| | |- loose_bb_train.csv
+| | |- loose_bb_test.csv
+| | |- loose_landmark_train.csv
+| | |- loose_landmark_test.csv
+```
 
 
 To preprocess the VGGFace2 data, run this command:

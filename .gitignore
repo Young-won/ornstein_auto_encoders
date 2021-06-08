@@ -7,3 +7,4 @@ mnist_experiments/*
 mnist_pretrained/*
 vggface2_experiments/*
 vggface2_pretrained/*
+vggface2/*
