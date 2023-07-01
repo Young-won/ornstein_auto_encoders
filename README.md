@@ -1,6 +1,6 @@
 # Learning from Nested Data with Ornstein Auto-Encoders
 
-This repository is for the implementation of the PSOAE model described in "Learning from Nested Data with Ornstein Auto-Encoders". (link TBD)
+This repository is for the implementation of the PSOAE model described in "Learning from Nested Data with Ornstein Auto-Encoders". ![(PDF)](https://proceedings.mlr.press/v139/choi21a.html)
 
 #### Example of output pictures
 
